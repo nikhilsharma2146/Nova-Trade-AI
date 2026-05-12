@@ -100,6 +100,7 @@ h1, h2, h3 {
     background: linear-gradient(to right, #fff 20%, var(--neon-blue) 40%, var(--neon-purple) 60%, #fff 80%);
     background-size: 200% auto;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 6s linear infinite;
     margin-bottom: 1.5rem;
