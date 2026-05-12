@@ -1,0 +1,203 @@
+/* Neon Aurora Premium Theme - Ultra Modern FinDash Pro */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-base: #030712; /* Very dark blue/black */
+    --bg-surface: rgba(17, 24, 39, 0.4);
+    --neon-blue: #0ea5e9;
+    --neon-purple: #8b5cf6;
+    --neon-pink: #d946ef;
+    --neon-green: #10b981;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Global Body */
+.stApp {
+    background-color: var(--bg-base);
+    background-image: 
+        radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.15), transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(14, 165, 233, 0.15), transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.05), transparent 60%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    animation: slowBreathe 20s infinite alternate ease-in-out;
+}
+
+@keyframes slowBreathe {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Entrance Animations */
+div[data-testid="stVerticalBlock"] > div {
+    animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+}
+
+div[data-testid="stVerticalBlock"] > div:nth-child(1) { animation-delay: 0.1s; }
+div[data-testid="stVerticalBlock"] > div:nth-child(2) { animation-delay: 0.2s; }
+div[data-testid="stVerticalBlock"] > div:nth-child(3) { animation-delay: 0.3s; }
+div[data-testid="stVerticalBlock"] > div:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes floatUp {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Premium Neon Glassmorphism Cards */
+.glass-card {
+    background: var(--bg-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 1.8rem;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 1.5rem;
+    z-index: 1;
+}
+
+/* Card Hover Enhancements */
+.glass-card:hover {
+    transform: translateY(-6px) translateZ(0);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 
+        0 20px 40px -10px rgba(0, 0, 0, 0.7),
+        0 0 30px -5px rgba(139, 92, 246, 0.2),
+        inset 0 0 20px -5px rgba(14, 165, 233, 0.1);
+}
+
+/* Animated Card Glow Bar */
+.glass-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover::after {
+    width: 100%;
+}
+
+/* Header Typography */
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, #fff 20%, var(--neon-blue) 40%, var(--neon-purple) 60%, #fff 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 6s linear infinite;
+    margin-bottom: 1.5rem;
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+/* KPI Metrics Styling */
+.metric-title {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    letter-spacing: -1px;
+}
+
+/* Fancy Badges */
+.metric-change {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.75rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.metric-change.positive {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--neon-green);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.metric-change.negative {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* Sidebar Blur and Style */
+[data-testid="stSidebar"] {
+    background: rgba(3, 7, 18, 0.7) !important;
+    backdrop-filter: blur(24px);
+    border-right: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Cyberpunk Top Progress Bar */
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink), var(--neon-blue));
+    background-size: 300% 100%;
+    z-index: 9999;
+    animation: topGlow 4s linear infinite;
+    box-shadow: 0 0 15px var(--neon-purple);
+}
+
+@keyframes topGlow {
+    0% { background-position: 100% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Input Fields overrides */
+.stTextInput input, .stSelectbox > div > div {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    transition: all 0.3s ease !important;
+}
+
+.stTextInput input:focus, .stSelectbox > div > div:focus {
+    border-color: var(--neon-purple) !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Dataframe table styling */
+[data-testid="stDataFrame"] {
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: var(--bg-surface);
+}
